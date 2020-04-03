@@ -6,7 +6,7 @@ const items = [
     name: "Maska biała trójkąty1",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -16,7 +16,7 @@ const items = [
     name: "Maska biała trójkąty2",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -26,7 +26,7 @@ const items = [
     name: "Maska czarna kwiatki",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -37,7 +37,7 @@ const items = [
     name: "Maska czerwona serduszka",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -48,7 +48,7 @@ const items = [
     name: "Maska czarna bąbelki",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -58,7 +58,7 @@ const items = [
     name: "Maska biała gumki",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -68,7 +68,7 @@ const items = [
     name: "Maska niebieska gumki",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -79,7 +79,7 @@ const items = [
     name: "Maska biała kwiatki",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -89,7 +89,7 @@ const items = [
     name: "Maska biała haftowane logo",
     prize: 12.99,
     oldPrize: 17.99,
-    prizeSelected: [12.99, 12.99, 12.99, 11.99, 10.99, 10.49, 10.49],
+    prizeSelected: [12.99, 12.99, 12.99, 11.99, 10.99, 9.99, 9.49],
     prizeEach: 12.99,
     description: ""
   },
@@ -99,7 +99,7 @@ const items = [
     name: "Maska niebieskie liście",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -109,7 +109,7 @@ const items = [
     name: "Maska moro",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -119,7 +119,7 @@ const items = [
     name: "Maska zielona",
     prize: 8.99,
     oldPrize: 13.99,
-    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 6.49, 6.49],
+    prizeSelected: [8.99, 8.99, 8.99, 7.99, 6.99, 5.99, 5.49],
     prizeEach: 8.99,
     description: ""
   },
@@ -130,7 +130,7 @@ const items = [
     prize: 9.99,
     oldPrize: 14.99,
     prizeEach: 9.99,
-    prizeSelected: [9.99, 9.99, 9.99, 8.99, 7.99, 7.49, 7.49],
+    prizeSelected: [9.99, 9.99, 9.99, 8.99, 7.99, 6.99, 6.49],
     description:
       "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa"
   },
@@ -139,7 +139,7 @@ const items = [
     images: ["/images/M0-1.jpeg", "/images/M0-2.jpeg"],
     name: "Maska błękitna troczki",
     prize: 9.99,
-    prizeSelected: [9.99, 9.99, 9.99, 8.99, 7.99, 7.49, 7.49],
+    prizeSelected: [9.99, 9.99, 9.99, 8.99, 7.99, 6.99, 6.49],
     oldPrize: 14.99,
     prizeEach: 8.99,
     description:
