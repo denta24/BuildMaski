@@ -130,7 +130,7 @@ const items = [
     prize: 8.99,
     oldPrize: 13.99,
     prizeEach: 8.99,
-    prizeSelected: [8.99, 8.99, 8.99, 8.69, 7.99, 6.99, 6.99],
+    prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.99, 6.99],
     description:
       "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa"
   },
@@ -139,7 +139,7 @@ const items = [
     images: ["/images/M0-1.jpeg", "/images/M0-2.jpeg"],
     name: "Maska błękitna troczki",
     prize: 8.99,
-    prizeSelected: [8.99, 8.99, 8.99, 8.69, 7.99, 6.99, 6.99],
+    prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.99, 6.99],
     oldPrize: 13.99,
     prizeEach: 8.99,
     description:
