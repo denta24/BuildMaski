@@ -129,9 +129,7 @@ export default class AdminOrders extends Component {
 
         if (customerInfo.deliveryMethod === "Przelew na konto")
           deliveryPrice = 13.99;
-        else if (
-          customerInfo.deliveryMethod === "Płatność przy odbiorze"
-        )
+        else if (customerInfo.deliveryMethod === "Płatność przy odbiorze")
           deliveryPrice = 21.99;
 
         ////////////Tabelka
@@ -227,7 +225,7 @@ export default class AdminOrders extends Component {
                     Cena całkowita{" "}
                   </div>{" "}
                   <div className="adminOrder__singleTableRow">
-                    {customerInfo.suma * 1 + deliveryPrice} PLN
+                    {[customerInfo.suma * 1 + deliveryPrice][0].toFixed(2)} PLN
                   </div>
                 </div>
               </div>
