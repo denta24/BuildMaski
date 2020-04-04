@@ -293,7 +293,9 @@ h5 {
 .popup-content {
   width: auto !important;
 }
-
+a { 
+  text-decoration: none !important;
+}
 .red {
   background-color: rgb(228, 26, 26) !important;
   color: white !important;

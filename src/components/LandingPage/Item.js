@@ -166,7 +166,7 @@ function Item({ items, match, handleAddingToCart, best }) {
             </h2>
             <hr />
             <div class="product-rating my-2">
-              Dostępność: towar na wyczerpaniu
+              Dostępność: <i>Towar dostępny</i>
             </div>
             <div class="product-rating mb-2 vat">Wysyłka w: 24 godzin</div>
             <span class="product_price price-new">
