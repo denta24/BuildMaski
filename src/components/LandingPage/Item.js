@@ -14,12 +14,11 @@ function Item({ items, match, handleAddingToCart, best }) {
 
   const handleAnimations = () => {
     const titles = document.querySelector(".col-lg-4.col-md-6.mb-4").childNodes;
-    console.log(titles);
     const items = document.querySelector(
       ".media-body.order-2.order-lg-2.ml-lg-5.flex-fill"
     ).childNodes;
 
-    const tl = gsap.timeline({ defaults: { ease: "power3.inOut" } });
+    const tl = gsap.timeline({ defaults: { ease: "power3.inOut", opacity: 1 } });
     tl.from(titles, 2, { x: -300, opacity: 0, stagger: 0.2,delay: .4 }).from(
       items,
       {
@@ -43,7 +42,7 @@ function Item({ items, match, handleAddingToCart, best }) {
     const ID = parseInt(match.params.id);
     const item1 = items.find(itm => itm.id === ID);
     setitem(item1);
-    handleAnimations();
+    // handleAnimations();
   }, [item]);
 
   const mini_images = item.images.map((itm, idx) => {
