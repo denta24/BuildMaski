@@ -9,7 +9,7 @@ export default class Cart extends Component {
     customerInfo: {},
     isClicked: false,
     suma: 0,
-    isPop: false
+    isPop: false,
   };
 
   popup = [];
@@ -20,11 +20,13 @@ export default class Cart extends Component {
 
       let suma = 0;
       const items = cookiesLog;
-      items.forEach(item => (suma += item.quantity * item.prize * item.packet));
+      items.forEach(
+        (item) => (suma += item.quantity * item.prize * item.packet)
+      );
       suma = suma.toFixed(2);
       this.setState({
         cart: cookiesLog,
-        suma
+        suma,
       });
     }
   }
@@ -93,11 +95,11 @@ export default class Cart extends Component {
         telephone,
         email,
         deliveryMethod: text,
-        suma: this.state.suma
+        suma: this.state.suma,
       };
       this.setState({
         customerInfo,
-        isClicked: true
+        isClicked: true,
       });
     }
 
@@ -110,7 +112,7 @@ export default class Cart extends Component {
 
     document.body.scrollTo({
       top: formPosition,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   };
   sendToBackEnd = () => {
@@ -121,7 +123,7 @@ export default class Cart extends Component {
     const data = {
       cart,
       customerInfo,
-      date
+      date,
     };
     console.log(data);
 
@@ -129,15 +131,15 @@ export default class Cart extends Component {
       fetch("/api/new-order", {
         method: "POST",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(data),
       })
-        .then(res => res.json())
-        .then(res => {
+        .then((res) => res.json())
+        .then((res) => {
           if (res.isSaved) {
             this.setState({
-              isPop: true
+              isPop: true,
             });
           }
         });
@@ -149,7 +151,7 @@ export default class Cart extends Component {
     const items = this.state.cart;
     let suma = 0;
     console.log(this.state);
-    items.forEach(item => (suma += item.quantity * item.prize * item.packet));
+    items.forEach((item) => (suma += item.quantity * item.prize * item.packet));
 
     let info = [];
     if (this.state.isClicked) {
@@ -162,7 +164,7 @@ export default class Cart extends Component {
         email,
         street,
         numberStreet,
-        deliveryMethod
+        deliveryMethod,
       } = this.state.customerInfo;
 
       info = [
@@ -218,7 +220,8 @@ export default class Cart extends Component {
             </ol>
             <p>
               <hr />
-              Po powierdzeniu zamówienia, skontaktujemy się z Toba drogą mailową
+              Po powierdzeniu zamówienia, skontaktujemy się z Toba telefonicznie
+              (SMS) lub drogą meilową.
               <span style={{ fontWeight: "400" }}>
                 <hr />W razie pytań prosimy o kontakt. Więcej informacji
                 znajdziesz w zakładce <a href="/kontakt">kontakt</a>
@@ -229,7 +232,7 @@ export default class Cart extends Component {
               Potwierdź zamówienie
             </button>
           </div>
-        </div>
+        </div>,
       ];
     }
 
@@ -260,7 +263,7 @@ export default class Cart extends Component {
                 <div className="singleProduct__info-des"> {item.prize}</div>
               </div>
             </div>
-            <button onClick={e => this.handleDelete(e, index)}>USUŃ</button>
+            <button onClick={(e) => this.handleDelete(e, index)}>USUŃ</button>
           </div>
 
           <div className="singleProduct__prize">
@@ -325,13 +328,13 @@ export default class Cart extends Component {
             Przejdź dalej
           </button>
         </div>
-      </div>
+      </div>,
     ];
 
     const popup = [
       <div className="popup">
         <div
-          onClick={e => {
+          onClick={(e) => {
             document.querySelector(".popup").style.display = "none";
           }}
           className="popup__background"
@@ -339,8 +342,8 @@ export default class Cart extends Component {
         <div className="popup__content">
           <div className="popup__contentText">
             <div className="popup__title">Zamówienie zaakceptowane</div>
-            Zamówienie zostało pomyślnie wysłane. Prosimy sprawdzić dane
-            płatności na Państwa adresie mailowym.
+            Zamówienie zostało pomyślnie wysłane. Prosimy oczekiwać na{" "}
+            <b>SMS</b> lub<b>e-mail</b>.
             <br />
             <br />
             Jeżeli nie widzą Państwo mail'a prosimy o sprawdzenie zakładki -
@@ -356,7 +359,7 @@ export default class Cart extends Component {
             Zakończ
           </button>
         </div>
-      </div>
+      </div>,
     ];
 
     return (
@@ -397,7 +400,7 @@ export default class Cart extends Component {
             this.setState({ isPop: false });
           }}
         >
-          {close => (
+          {(close) => (
             <div className="modale">
               <a
                 className="close"
@@ -409,8 +412,8 @@ export default class Cart extends Component {
               </a>
               <h4 className="header"> Zamównie przyjęte do realizacji</h4>
               <hr />
-              Zamówienie zostało pomyślnie wysłane. Prosimy sprawdzić dane
-              płatności na Państwa adresie mailowym.
+              Zamówienie zostało pomyślnie wysłane. Zamówienie zostało pomyślnie
+              wysłane. Prosimy oczekiwać na <b>SMS</b> lub <b>e-mail</b>.
               <br />
               <br />
               Jeżeli nie widzą Państwo mail'a prosimy o sprawdzenie zakładki -
