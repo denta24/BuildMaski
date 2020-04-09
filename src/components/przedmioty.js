@@ -122,7 +122,28 @@ const items = [
     prizeEach: 8.99,
     description: "",
   },
-
+  {
+    id: 12,
+    images: ["/images/M1-1.jpeg", "/images/M1-2.jpeg"],
+    name: "Maska biała troczki",
+    prize: 9.99,
+    oldPrize: 13.99,
+    prizeEach: 9.99,
+    prizeSelected: [9.99, 9.99, 9.99, 8.69, 7.99, 6.99, 6.99],
+    description:
+      "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa",
+  },
+  {
+    id: 13,
+    images: ["/images/M0-1.jpeg", "/images/M0-2.jpeg"],
+    name: "Maska błękitna troczki",
+    prize: 9.99,
+    prizeSelected: [9.99, 9.99, 9.99, 8.69, 7.99, 6.99, 6.99],
+    oldPrize: 13.99,
+    prizeEach: 9.99,
+    description:
+      "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa",
+  },
   {
     id: 14,
     images: ["/images/M14-0.jpg", "/images/M14-1.jpg"],
@@ -173,28 +194,6 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
-  },
-  {
-    id: 12,
-    images: ["/images/M1-1.jpeg", "/images/M1-2.jpeg"],
-    name: "Maska biała troczki",
-    prize: 9.99,
-    oldPrize: 13.99,
-    prizeEach: 9.99,
-    prizeSelected: [9.99, 9.99, 9.99, 8.69, 7.99, 6.99, 6.99],
-    description:
-      "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa",
-  },
-  {
-    id: 13,
-    images: ["/images/M0-1.jpeg", "/images/M0-2.jpeg"],
-    name: "Maska błękitna troczki",
-    prize: 9.99,
-    prizeSelected: [9.99, 9.99, 9.99, 8.69, 7.99, 6.99, 6.99],
-    oldPrize: 13.99,
-    prizeEach: 9.99,
-    description:
-      "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa",
   },
 ];
 
