@@ -297,8 +297,8 @@ a {
   text-decoration: none !important;
 }
 .red {
-  background-color: rgb(228, 26, 26) !important;
-  color: white !important;
+  background-color: rgb(255, 255, 255) !important;
+  color: rgb(49, 49, 49) !important;
   font-weight: 800;
 }
 .entry-content div a {
