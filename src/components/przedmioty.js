@@ -8,6 +8,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 1,
@@ -18,6 +19,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 2,
@@ -28,6 +30,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
 
   {
@@ -39,6 +42,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
 
   {
@@ -50,6 +54,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 5,
@@ -60,6 +65,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 6,
@@ -70,6 +76,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
 
   {
@@ -81,6 +88,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 8,
@@ -91,6 +99,7 @@ const items = [
     prizeSelected: [11.99, 11.99, 11.99, 11.49, 9.99, 9.99, 9.99],
     prizeEach: 11.99,
     description: "",
+    group: 3,
   },
   {
     id: 9,
@@ -101,6 +110,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 10,
@@ -111,6 +121,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 11,
@@ -121,6 +132,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 12,
@@ -132,6 +144,7 @@ const items = [
     prizeSelected: [9.99, 9.99, 9.99, 8.69, 7.99, 6.99, 6.99],
     description:
       "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa",
+    group: 2,
   },
   {
     id: 13,
@@ -143,17 +156,18 @@ const items = [
     prizeEach: 9.99,
     description:
       "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa",
+    group: 2,
   },
   {
     id: 14,
     images: ["/images/M14-0.jpg", "/images/M14-1.jpg"],
     name: "Maska serduszka 2",
-    prize: 9.99,
-    prizeSelected: [9.99, 9.99, 9.99, 8.69, 7.99, 6.99, 6.99],
-    oldPrize: 13.99,
-    prizeEach: 9.99,
-    description:
-      "100 % bawełna artykuł medikal granatura 180 gram.pojedyncza warstwa",
+    prize: 8.99,
+    oldPrize: 12.99,
+    prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
+    prizeEach: 8.99,
+    description: "",
+    group: 1,
   },
   {
     id: 15,
@@ -164,6 +178,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 16,
@@ -174,6 +189,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 17,
@@ -184,6 +200,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
   {
     id: 18,
@@ -194,6 +211,7 @@ const items = [
     prizeSelected: [8.99, 8.99, 8.99, 8.69, 6.99, 6.49, 6.49],
     prizeEach: 8.99,
     description: "",
+    group: 1,
   },
 ];
 

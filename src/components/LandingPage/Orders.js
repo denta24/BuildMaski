@@ -40,6 +40,23 @@ export default class AdminOrders extends Component {
       });
   };
 
+  handleModyfing = (target, status) => {
+    const options = {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ target, status }),
+    };
+
+    fetch("/api/orderModify", options)
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        this.loadItem();
+      });
+  };
+
   async componentDidMount() {
     const key = Cookies.get("maseczki-ochronne-admin");
     if (key === "eyJrIjoiT0tTcG1pUlY2RnVKZTFVaDFsNFZXdE9ZWmNrMkZYbk") {
@@ -66,21 +83,47 @@ export default class AdminOrders extends Component {
 
           return (
             <>
-              <tr
-                onClick={() => {
-                  this.handleListClick(item);
-                }}
-              >
+              <tr className={item.status}>
+                <th style={{width:"50px !important"}}
+                  onClick={() => {
+                    this.handleListClick(item);
+                  }}
+                >
+                  Pokaż
+                </th>
                 <th>{index}</th>
                 <th>{item.customerInfo.name}</th>
                 <th>{item.customerInfo.surname}</th>
                 <th>{item.customerInfo.city}</th>
-                <th>{item.cart.length}</th>
                 <th>{item.customerInfo.suma}</th>
                 <th>{item.customerInfo.telephone}</th>
                 <th>{item.customerInfo.email}</th>
                 <th>{item.customerInfo.deliveryMethod}</th>
                 <th>{item.date}</th>
+                <th>{item.status}</th>
+                <button
+                  onClick={() => {
+                    this.handleModyfing(item._id, "Nowe");
+                  }}
+                >
+                  Nowe
+                </button>
+                <button
+                  onClick={() => {
+                    this.handleModyfing(item._id, "Przelew");
+                  }}
+                >
+                  Przelew
+                </button>
+                <button
+                  onClick={() => {
+                    this.handleModyfing(item._id, "Wysłane");
+                  }}
+                >
+                  Wysłane
+                </button>
+                {/* <button>P</button>
+                <button>M</button> */}
               </tr>
             </>
           );
@@ -108,16 +151,10 @@ export default class AdminOrders extends Component {
                 <div className="singleCartItem__infoSingle">
                   Ilość paczek: {item.quantity}
                 </div>
-                <div className="singleCartItem__infoSingle">
-                  Cena: {item.prize}zł za sztukę
-                </div>
+
                 <div className="singleCartItem__infoSingle">
                   <hr />
-                  <h6>
-                    Łącznie:{" "}
-                    {[item.prize * item.packet * item.quantity][0].toFixed(2)}zł
-                    za {item.quantity * item.packet} masek
-                  </h6>
+                  <h6>{item.quantity * item.packet} maski</h6>
                   <hr />
                 </div>
               </div>
@@ -197,6 +234,53 @@ export default class AdminOrders extends Component {
                     {customerInfo.telephone}
                   </div>
                 </div>
+                {/*rodzaje produktów */}
+                <div className="adminOrder__singleTableColumn">
+                  <div className="adminOrder__singleTableRow">Gumki</div>
+                  <div className="adminOrder__singleTableRow">
+                    {customerInfo.quantityOfGroups
+                      ? customerInfo.quantityOfGroups[0]
+                      : "-"}
+                    {"  "}
+                    szt, po {"  "}
+                    {customerInfo.quantityPrizes
+                      ? customerInfo.quantityPrizes[0]
+                      : "-"}
+                    {"  "}
+                    zł/szt
+                  </div>
+                </div>
+                <div className="adminOrder__singleTableColumn">
+                  <div className="adminOrder__singleTableRow">Troczki</div>
+                  <div className="adminOrder__singleTableRow">
+                    {customerInfo.quantityOfGroups
+                      ? customerInfo.quantityOfGroups[1]
+                      : "-"}
+                    {"  "}
+                    szt, po {"  "}
+                    {customerInfo.quantityPrizes
+                      ? customerInfo.quantityPrizes[1]
+                      : "-"}
+                    {"  "}
+                    zł/szt
+                  </div>
+                </div>
+                <div className="adminOrder__singleTableColumn">
+                  <div className="adminOrder__singleTableRow">Haft</div>
+                  <div className="adminOrder__singleTableRow">
+                    {customerInfo.quantityOfGroups
+                      ? customerInfo.quantityOfGroups[2]
+                      : "-"}
+                    {"  "}
+                    szt, po {"  "}
+                    {customerInfo.quantityPrizes
+                      ? customerInfo.quantityPrizes[2]
+                      : "-"}
+                    {"  "}
+                    zł/szt
+                  </div>
+                </div>
+
                 <div className="adminOrder__singleTableColumn">
                   <div className="adminOrder__singleTableRow">
                     Cena produktów{" "}
@@ -255,16 +339,17 @@ export default class AdminOrders extends Component {
               <hr size="2px" width="100%" />
               <table>
                 <tr>
-                  <th>index</th>
+                  <th></th>
+                  <th>id</th>
                   <th>Imie</th>
                   <th>Nazwisko</th>
                   <th>Miasto</th>
-                  <th>Ilość przedmiotów</th>
                   <th>Cena</th>
                   <th>Telefon</th>
                   <th>E-mail</th>
                   <th>Sposób przesyłki</th>
                   <th>Data</th>
+                  <th>Status</th>
                 </tr>
 
                 {listOfProducts}

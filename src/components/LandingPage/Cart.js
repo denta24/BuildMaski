@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import "./cart.css";
 import Cookies from "js-cookie";
 import Popup from "reactjs-popup";
+import promo from "../promo";
+import PrizeTable from "./PrizeTable.js";
 
 export default class Cart extends Component {
   state = {
@@ -34,7 +36,7 @@ export default class Cart extends Component {
   handleDelete = (e, index) => {
     this.props.cookiesDeleteItem(index);
   };
-  sendOrder = () => {
+  sendOrder = (quantityOfGroups, quantityPrizes) => {
     const name = document.getElementById("name").value;
     const surname = document.getElementById("surname").value;
     const street = document.getElementById("street").value;
@@ -84,7 +86,11 @@ export default class Cart extends Component {
 
       const translate = orderForm.offsetWidth + marginRight1 * 1;
       orderMove.style.transform = `translateX(${-translate}px)`;
-
+      const suma = (
+        quantityOfGroups[0] * quantityPrizes[0] +
+        quantityOfGroups[1] * quantityPrizes[1] +
+        quantityOfGroups[2] * quantityPrizes[2]
+      ).toFixed(2);
       const customerInfo = {
         name,
         surname,
@@ -95,7 +101,9 @@ export default class Cart extends Component {
         telephone,
         email,
         deliveryMethod: text,
-        suma: this.state.suma,
+        quantityOfGroups,
+        quantityPrizes,
+        suma,
       };
       this.setState({
         customerInfo,
@@ -124,6 +132,7 @@ export default class Cart extends Component {
       cart,
       customerInfo,
       date,
+      status: "Nowe",
     };
     console.log(data);
 
@@ -150,9 +159,31 @@ export default class Cart extends Component {
   render() {
     const items = this.state.cart;
     let suma = 0;
-    console.log(this.state);
-    items.forEach((item) => (suma += item.quantity * item.prize * item.packet));
 
+    /////////// counting quantity of groups
+    const quantityOfGroups = [0, 0, 0];
+    items.forEach((item) => {
+      quantityOfGroups[item.group - 1] += item.quantity * item.packet * 1;
+    });
+    console.log(quantityOfGroups);
+    /////////// counting sum
+    console.log(promo);
+
+    const quantityPrizes = [promo[0][0], promo[1][0], promo[2][0]];
+
+    const quantities = [3, 5, 10, 20, 50, 100, 200];
+    const quantitiesReversed = [...quantities];
+    quantitiesReversed.reverse();
+
+    quantityOfGroups.forEach((group, index) => {
+      const ile = quantitiesReversed.find((qnt) => group >= qnt) || 0;
+      const indexPromo = quantities.findIndex((qnts) => qnts === ile);
+      quantityPrizes[index] = promo[index][indexPromo] || promo[index][0];
+    });
+
+    console.log({ quantityPrizes });
+
+    ///////////
     let info = [];
     if (this.state.isClicked) {
       const {
@@ -249,18 +280,31 @@ export default class Cart extends Component {
 
             <div className="sizes">
               <div className="singleProduct__info">
+                <div className="singleProduct__info-des">Rodzaj:</div>
                 <div className="singleProduct__info-des">Masek w paczce:</div>
                 <div className="singleProduct__info-des">Ilość paczek:</div>
                 <div className="singleProduct__info-des">Łącznie masek:</div>
                 <div className="singleProduct__info-des">Cena za sztukę:</div>
               </div>
               <div className="singleProduct__info">
+                <div className="singleProduct__info-des">
+                  {item.group === 1
+                    ? "Gumki"
+                    : item.group === 2
+                    ? "Troczki"
+                    : item.group === 3
+                    ? "Haft"
+                    : "-"}
+                </div>
                 <div className="singleProduct__info-des">{item.packet}</div>
                 <div className="singleProduct__info-des"> {item.quantity}</div>
                 <div className="singleProduct__info-des">
                   {item.packet * item.quantity}
                 </div>
-                <div className="singleProduct__info-des"> {item.prize}</div>
+                <div className="singleProduct__info-des">
+                  {" "}
+                  {quantityPrizes[item.group - 1]}
+                </div>
               </div>
             </div>
             <button onClick={(e) => this.handleDelete(e, index)}>USUŃ</button>
@@ -268,12 +312,133 @@ export default class Cart extends Component {
 
           <div className="singleProduct__prize">
             {" "}
-            {[item.prize * item.quantity * item.packet][0].toFixed(2)} PLN
+            {[
+              quantityPrizes[item.group - 1] * item.quantity * item.packet,
+            ][0].toFixed(2)}{" "}
+            PLN
           </div>
         </div>
       );
     });
 
+    const groupSum = [0, 0, 0];
+    groupSum.forEach(
+      (group, index) =>
+        (groupSum[index] =
+          (quantityOfGroups[index] * quantityPrizes[index]).toFixed(2) * 1)
+    );
+    console.log(groupSum);
+    const AllOrder = [
+      <>
+        <div style={{ justifyContent: "center" }} className="singleProduct">
+          <div className="sizes">
+            <div className="singleProduct__info flexbox-cart">
+              <div className="singleProduct__info-des">Rodzaj </div>
+
+              {quantityOfGroups[0] === 0 ? null : (
+                <div className="singleProduct__info-des">Gumki:</div>
+              )}
+              {quantityOfGroups[1] === 0 ? null : (
+                <div className="singleProduct__info-des">Troczki:</div>
+              )}
+              {quantityOfGroups[2] === 0 ? null : (
+                <div className="singleProduct__info-des">Haft:</div>
+              )}
+            </div>
+            <div className="singleProduct__info flexbox-cart">
+              <div className="singleProduct__info-des">Ilość </div>
+
+              {quantityOfGroups[0] === 0 ? null : (
+                <div className="singleProduct__info-des">
+                  {quantityOfGroups[0]} szt
+                </div>
+              )}
+              {quantityOfGroups[1] === 0 ? null : (
+                <div className="singleProduct__info-des">
+                  {quantityOfGroups[1]} szt
+                </div>
+              )}
+              {quantityOfGroups[2] === 0 ? null : (
+                <div className="singleProduct__info-des">
+                  {quantityOfGroups[2]} szt
+                </div>
+              )}
+            </div>
+            <div className="singleProduct__info flexbox-cart">
+              <div className="singleProduct__info-des">Cena </div>
+              {quantityOfGroups[0] === 0 ? null : (
+                <div className="singleProduct__info-des">
+                  {quantityPrizes[0] === promo[0][0] ? (
+                    quantityPrizes[0]
+                  ) : (
+                    <>
+                      <s style={{ color: "red", fontSize: "12px" }}>
+                        {promo[0][0]}
+                      </s>{" "}
+                      {quantityPrizes[0]}{" "}
+                    </>
+                  )}{" "}
+                  zł/szt
+                </div>
+              )}
+              {quantityOfGroups[1] === 0 ? null : (
+                <div className="singleProduct__info-des">
+                  {quantityPrizes[1] === promo[1][0] ? (
+                    quantityPrizes[1]
+                  ) : (
+                    <>
+                      <s style={{ color: "red", fontSize: "12px" }}>
+                        {promo[1][0]}
+                      </s>{" "}
+                      {quantityPrizes[1]}{" "}
+                    </>
+                  )}{" "}
+                  zł/szt
+                </div>
+              )}
+              {quantityOfGroups[2] === 0 ? null : (
+                <div className="singleProduct__info-des">
+                  {quantityPrizes[2] === promo[2][0]
+                    ? quantityPrizes[2]
+                    : (quantityOfGroups,
+                      (
+                        <>
+                          <s style={{ color: "red", fontSize: "12px" }}>
+                            {promo[2][0]}
+                          </s>{" "}
+                          {quantityPrizes[2]}{" "}
+                        </>
+                      ))}{" "}
+                  zł/szt
+                </div>
+              )}
+            </div>
+            <div className="singleProduct__info flexbox-cart">
+              <div className="singleProduct__info-des">Suma </div>
+
+              {quantityOfGroups[0] === 0 ? null : (
+                <div className="singleProduct__info-des">{groupSum[0]} zł</div>
+              )}
+              {quantityOfGroups[1] === 0 ? null : (
+                <div className="singleProduct__info-des">{groupSum[1]} zł</div>
+              )}
+              {quantityOfGroups[2] === 0 ? null : (
+                <div className="singleProduct__info-des">{groupSum[2]} zł</div>
+              )}
+            </div>
+          </div>
+          <div
+            style={{ flexBasis: "100%", justifyContent: "center" }}
+            className="sizes"
+          >
+            <div className="singleProduct--suma__des">Łącznie:</div>
+            <div className="singleProduct--suma__des">
+              {(groupSum[0] + groupSum[1] + groupSum[2]).toFixed(2)} PLN + przesyłka
+            </div>
+          </div>
+        </div>
+      </>,
+    ];
     const orderInfo = [
       <div className="orderForm">
         <div className="orderForm__personalInfo">
@@ -324,7 +489,10 @@ export default class Cart extends Component {
             <br /> W przypadku wysyłki za granicę koszt zgodnie z cennikiem
             Poczty Polskiej.
           </span>
-          <button onClick={this.sendOrder} class="sendOrder">
+          <button
+            onClick={() => this.sendOrder(quantityOfGroups, quantityPrizes)}
+            class="sendOrder"
+          >
             Przejdź dalej
           </button>
         </div>
@@ -375,14 +543,10 @@ export default class Cart extends Component {
           <div className="orderWrapper">
             <div className="orderedProducts">
               <div className="allProducts">
-                {listOfProducts}
+                <PrizeTable />
 
-                <div className="singleProduct singleProduct--suma">
-                  <div className="singleProduct--suma__des">SUMA</div>
-                  <div className="singleProduct--suma__des">
-                    {suma.toFixed(2)} PLN
-                  </div>
-                </div>
+                {AllOrder}
+                {listOfProducts}
               </div>
             </div>
 
@@ -412,8 +576,8 @@ export default class Cart extends Component {
               </a>
               <h4 className="header"> Zamównie przyjęte do realizacji</h4>
               <hr />
-              Zamówienie zostało pomyślnie wysłane. Zamówienie zostało pomyślnie
-              wysłane. Prosimy oczekiwać na <b>SMS</b> lub <b>e-mail</b>.
+              Zamówienie zostało pomyślnie wysłane. Prosimy oczekiwać na{" "}
+              <b>SMS</b> lub <b>e-mail</b>.
               <br />
               <br />
               Jeżeli nie widzą Państwo mail'a prosimy o sprawdzenie zakładki -
