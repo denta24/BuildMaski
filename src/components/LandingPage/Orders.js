@@ -322,6 +322,12 @@ export default class AdminOrders extends Component {
                     {[customerInfo.suma * 1 + deliveryPrice][0].toFixed(2)} PLN
                   </div>
                 </div>
+                <div className="adminOrder__singleTableColumn">
+                  <div className="adminOrder__singleTableRow">Uwagi:</div>
+                  <div className="adminOrder__singleTableRow">
+                    {customerInfo.uwagi}
+                  </div>
+                </div>
               </div>
             </div>
             <div className="adminOrder__cart-info">{customerCart}</div>
